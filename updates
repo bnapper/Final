@@ -1,4 +1,4 @@
-var walls = [ 190, 225, 175, 230, 156]
+var walls = [ 190, 225, 175, 230, 156,]
 
 var wid = 30
 var left =0
@@ -26,9 +26,11 @@ function draw(){
   
    for (var i = 0; i < walls.length; i++) {
    	startx = 0
-    starty = i * 50
+    starty = i * 79
     //walls[i]
     rect(startx, starty, walls[i], 30);
     rect(walls[i]+30, starty, startx+400,30); 
+     
+     
    }
 }
