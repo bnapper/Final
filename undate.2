@@ -1,0 +1,57 @@
+var walls = [190, 225, 175, 230, 156, ]
+
+var carL = {
+  x: 100,
+}
+
+var carR = {
+  x: 100,
+}
+
+const carSpeed = 5
+const carWidth = 10
+const carHeight = 20
+
+//var wid = 30
+var left = 0
+//var right = 230
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  stroke(0);
+  fill('red');
+
+
+  rect(290, 0, 420, 400);
+  rect(left, 0, 120, 400);
+
+  //car
+  rect(200, carL.x, carWidth, carHeight);
+
+  //rect(left,50,190,wid);
+  //rect(left,125, 250,wid);
+  //rect(right,50,100, wid);
+  //rect(282,125,190,wid);
+  //rect(0, 200, 160,wid);
+  //rect(200,200, 100,wid);
+
+  for (var i = 0; i < walls.length; i++) {
+    startx = 0
+    starty = i * 79
+    //walls[i]
+    rect(startx, starty, walls[i], 30);
+    rect(walls[i] + 30, starty, startx + 400, 30);
+
+    if (keyIsDown(81)) {
+      carL.y -= carSpeed;
+      if (carL.y < 0) {
+        carL.y = 0;
+      }
+    }
+
+
+  }
+}
