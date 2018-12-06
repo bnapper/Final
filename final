@@ -1,0 +1,94 @@
+new p5();
+
+var wall1 = (random(200) + 20);
+var wall2 = (random(200) + 20);
+var wall3 = (random(200) + 20);
+var wall4 = (random(200) + 20);
+var wall5 = (random(200) + 20);
+var left = 00;
+
+var win = 0;
+
+var car = {
+  x: 200,
+  y: 350
+}
+
+var font,
+  fontsize = 40
+
+function preload() {
+  // Ensure the .ttf or .otf font stored in the assets directory
+  // is loaded before setup() and draw() are called
+  font = loadFont('OpenSans-Regular.ttf');
+}
+
+function setup() {
+  createCanvas(400, 400);
+
+// Set text characteristics
+  textFont(font);
+  textSize(fontsize);
+  textAlign(CENTER, CENTER);
+}
+
+
+function draw() {
+  background(220);
+  stroke(0);
+
+  fill('red');
+ 
+
+
+
+  var walls = [wall1, wall2, wall3, wall4, wall5, ];
+
+  for (var i = 0; i < walls.length; i++) {
+    startx = 0
+    starty = i * 80
+
+    //walls[i]
+    rect(startx, starty, walls[i], 30);
+    rect(walls[i] + 30, starty, startx + 400, 30);
+  }
+
+
+  rect(car.x, car.y, 20, 20);
+
+
+  //Check if won
+  if( car.y < 0) {
+    win = 1;
+    textAlign(CENTER);
+  	drawWords( width * .5 ); 
+  }
+  
+  //Car movement
+  if (win == 0) {
+    if (keyIsDown(LEFT_ARROW)) {
+      car.x -= 5;
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+      car.x += 5;
+    }
+    if (keyIsDown(UP_ARROW)) {
+      car.y -= 5;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+      car.y += 5;
+    }
+  } else {
+    
+  } 
+  
+}
+
+function drawWords(x) {
+  // The text() function needs three parameters:
+  // the text to draw, the horizontal position,
+  // and the vertical position
+  fill(0);
+  text("You Win!", x, 80);
+
+}
